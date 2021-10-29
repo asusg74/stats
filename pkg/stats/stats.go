@@ -1,6 +1,6 @@
 package stats
 
-import "github.com/asusg74/bank/v2/pkg/types"
+import "github.com/asusg74/bank/pkg/types"
 
 // Calculates avg sum of payments
 func Avg(payments []types.Payment) types.Money {
@@ -12,10 +12,8 @@ func Avg(payments []types.Payment) types.Money {
 	}
 
 	for _, payment := range payments {
-		if payment.Status != types.StatusFail {
 			allSum += payment.Amount
 			allCount += 1
-		}
 	}
 
 	if allCount < 1 {
@@ -33,9 +31,6 @@ func TotalInCategory(payments []types.Payment, category types.Category) types.Mo
 
 	for _, payment := range payments {
 		if payment.Category != category {
-			continue
-		}
-		if payment.Status == types.StatusFail {
 			continue
 		}
 		allSum += payment.Amount
