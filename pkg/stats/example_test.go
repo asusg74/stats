@@ -2,12 +2,12 @@ package stats
 
 import (
 	"fmt"
-	 "github.com/asusg74/bank/pkg/types"
+
+	"github.com/asusg74/bank/pkg/types"
 )
 
-
 func ExampleAvg_positive() {
-	fmt.Println(Avg([]types.Payment{{Amount: 10},{Amount: 20},}))
+	fmt.Println(Avg([]types.Payment{{Amount: 10}, {Amount: 20}}))
 	// Output:
 	// 15
 }
