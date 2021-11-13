@@ -44,3 +44,23 @@ func TotalInCategory(payments []types.Payment, category types.Category) types.Mo
 
 	return allSum
 }
+func CategoriesAvg(payments []types.Payment) map[types.Category]types.Money {
+
+	//Ответ 
+	result := map[types.Category]types.Money{}
+	
+	//Количество платежей определенного типа
+	count := map[types.Category]int{}
+	for _, payment := range payments {
+		result[payment.Category] += payment.Amount
+		count[payment.Category]++
+	}
+	
+	for category, cnt := range count {
+		if cnt <= 0 {
+			continue
+		}
+		result[category] /= types.Money(cnt)
+	}
+	return result
+	}
